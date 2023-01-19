@@ -21,6 +21,13 @@ dep:
 lint:
 	golangci-lint run
 
+.PHONY: build
+build:
+	@rm -rf bin/
+	@mkdir bin/
+	@cd bin && go build -v -o . ../cmd/api-server
+	@cd bin && go build -v -o . ../cmd/worker
+
 .PHONY: test
 test:
 	go test ./... -race -cover -coverprofile=c.out -covermode=atomic
