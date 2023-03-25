@@ -9,7 +9,7 @@ import (
 )
 
 type CreatePaymentRequest struct {
-	RequestID *uuid.UUID
+	RequestID uuid.UUID
 }
 
 type GetPaymentRequest struct {

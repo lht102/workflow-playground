@@ -18,15 +18,11 @@ func createPayment(
 	entClient *ent.PaymentClient,
 	request *approvalservice.CreatePaymentRequest,
 ) (*ent.Payment, error) {
-	builder := entClient.
+	entityPayment, err := entClient.
 		Create().
-		SetStatus(payment.StatusPENDING)
-
-	if request.RequestID != nil {
-		builder = builder.SetRequestID(*request.RequestID)
-	}
-
-	entityPayment, err := builder.Save(ctx)
+		SetRequestID(request.RequestID).
+		SetStatus(payment.StatusPENDING).
+		Save(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("create payment: %w", err)
 	}

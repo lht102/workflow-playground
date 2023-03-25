@@ -31,7 +31,7 @@ func (s *PaymentTestSuite) TestCreatePayment() {
 
 	requestID := uuid.New()
 	entityPayment, err := service.CreatePayment(context.TODO(), &approvalservice.CreatePaymentRequest{
-		RequestID: &requestID,
+		RequestID: requestID,
 	})
 	s.NoError(err)
 	s.Equal(entpayment.StatusPENDING, entityPayment.Status)

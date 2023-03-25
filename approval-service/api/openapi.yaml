@@ -241,6 +241,8 @@ components:
           x-go-type-import:
             name: uuid
             path: github.com/google/uuid
+      required:
+        - request_id
     CreateReviewRequest:
       type: object
       properties:
